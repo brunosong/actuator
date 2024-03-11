@@ -1,0 +1,29 @@
+# 푸쉬게이트웨이 도커 컴포즈 프로퍼티
+
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "metrics"
+  endpoint:
+    metrics:
+      enabled: true
+  #부트 2.7와 부트3는 설정이 다르다  2.7 management.metrics.export.prometheus.pushgateway
+  prometheus:
+    metrics:
+      export:
+        pushgateway:
+          enabled: true
+          base-url: http://pushgateway:9091
+          job: pushgatewayJob
+          push-rate: 5000
+          grouping-key:
+            instance: ${HOSTNAME}
+
+
+
+
+
+

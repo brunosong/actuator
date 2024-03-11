@@ -1,3 +1,5 @@
+# 디폴트 설정
+
 
 #액츄에이터 설정
 management:
@@ -5,10 +7,11 @@ management:
     enabled-by-default: false # 모든 endpoint 를 띄우지 않고 시작한다.
     web:
       exposure:
-        include: "metrics"
+        include: "metrics,prometheus"
   endpoint:
     metrics:
       enabled: true           # 메트릭만 활성화 시킨다.
-
+    prometheus:
+      enabled: true
 
 
