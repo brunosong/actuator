@@ -3,10 +3,10 @@
 
 management:
   endpoints:
-    enabled-by-default: true
+    enabled-by-default: false
     web:
       exposure:
-        include: "*"
+        include: "metrics,env"
   endpoint:
     metrics:
       enabled: true
@@ -18,9 +18,11 @@ management:
       export:
         pushgateway:
           enabled: true
-          base-url: ${BASE_URL}
+          base-url: http://host.docker.internal:9091
           job: actuator-app
-          push-rate: 10000
+          push-rate: 5000
+          grouping-key:
+            instance: ${HOSTNAME}
 
 
 
