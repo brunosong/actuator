@@ -1,0 +1,13 @@
+version: '3'
+services:
+  actuator-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: brunosong-actuator-app
+    ports:
+      - "18888:8080"
+    restart: always
+    container_name: actuator-container
+    environment:
+      JAVA_OPTS : "-Dspring.profiles.active=pushgateway-docker"
